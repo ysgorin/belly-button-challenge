@@ -13,23 +13,20 @@ d3.json(samplesURL).then(function(data) {
   // Apply filter to get sample data
   let sampleData = data.samples.filter(filterByID)[0];
   
+  // Create horizontal bar chart with top ten OTUs of sample
   // Create top ten otuIDS list
   let topTenIDs = sampleData.otu_ids.slice(0,10);
-
   // Reverse the list for Plotly defaults
   topTenIDs.reverse();
-
   // Create top ten labels list
   let topTenLabels = sampleData.otu_labels.slice(0,10);
   //Reverse the list
   topTenLabels.reverse();
-
   // Create top ten values list and reverse the list
   let topTenValues = sampleData.sample_values.slice(0,10);
   topTenValues.reverse();
-
   // Create bar chart trace
-  let trace1 = {
+  let barTrace = {
     x: topTenValues,
     y: topTenIDs.map(function(id) {
       return "OTU " + id;
@@ -38,16 +35,32 @@ d3.json(samplesURL).then(function(data) {
     type: "bar",
     orientation: "h"
   };
-
   // Create chart data variable
-  let chartData = [trace1];
-
+  let barData = [barTrace];
   // Add a title
-  let layout = {
+  let barLayout = {
     title: "Top Ten OTUs"
   };
-
   // Create chart
-  Plotly.newPlot("bar", chartData, layout);
+  Plotly.newPlot("bar", barData, barLayout);
+
+  // Create bubble chart
+  let bubbleTrace = {
+    x: sampleData.otu_ids,
+    y: sampleData.sample_values,
+    mode: "markers",
+    marker: {
+      size: sampleData.sample_values,
+      color: sampleData.otu_ids
+    },
+    text: sampleData.otu_labels,
+  };
+  let bubbleData = [bubbleTrace];
+  let bubbleLayout = {
+    title: "Bubble Chart"
+  };
+  // Create Bubble Chart
+  Plotly.newPlot("bubble", bubbleData, bubbleLayout);
+
 // Close the .then function
 });
