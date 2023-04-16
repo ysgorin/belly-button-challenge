@@ -62,5 +62,16 @@ d3.json(samplesURL).then(function(data) {
   // Create Bubble Chart
   Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
+// Populate demographic information
+  // Create a filter function with parseInt()
+  function filterInteger(data) {
+    return data.id === parseInt(sample);
+  };
+  // Apply filter to get sample data for demographic
+  let demoData = data.metadata.filter(filterInteger)[0];
+  // Select demographic section using d3
+  let demoSection = d3.select("#sample-metadata");
+  Object.entries(demoData).forEach(([key, value]) => demoSection.append("li").text(`${key}: ${value}`));
+  
 // Close the .then function
 });
