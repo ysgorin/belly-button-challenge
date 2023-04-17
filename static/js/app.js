@@ -37,12 +37,8 @@ d3.json(samplesURL).then(function(data) {
   };
   // Create chart data variable
   let barData = [barTrace];
-  // Add a title
-  let barLayout = {
-    title: "Top Ten OTUs"
-  };
   // Create chart
-  Plotly.newPlot("bar", barData, barLayout);
+  Plotly.newPlot("bar", barData);
 
   // Create bubble chart
   let bubbleTrace = {
@@ -56,11 +52,8 @@ d3.json(samplesURL).then(function(data) {
     text: sampleData.otu_labels,
   };
   let bubbleData = [bubbleTrace];
-  let bubbleLayout = {
-    title: "Bubble Chart"
-  };
   // Create Bubble Chart
-  Plotly.newPlot("bubble", bubbleData, bubbleLayout);
+  Plotly.newPlot("bubble", bubbleData);
 
   // Populate demographic information
   // Create a filter function with parseInt()
