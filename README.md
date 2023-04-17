@@ -10,15 +10,8 @@ Technologies used in this project include:
 * D3.js
 * HTML
 
-## Screenshots
-![dropdown_populated](Screenshots/dropdown_populated.png)
-<br><br>
-![demographic](Screenshots/demographic.png)
-<br><br>
-![bar_chart](Screenshots/bar_chart.png)
-<br><br>
-![bubble_chart](Screenshots/bubble_chart.png)
-<br><br>
+## Screenshot
+![dashboard](Screenshots/dashboard.png)
 
 ## References
 Hulcr, J. et al. (2012) A Jungle in There: Bacteria in Belly Buttons are Highly Diverse, but Predictable. Retrieved from: http://robdunnlab.com/projects/belly-button-biodiversity/results-and-data/
