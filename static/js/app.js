@@ -68,7 +68,7 @@ d3.json(samplesURL).then(function(data) {
   let dropdown = d3.select("#selDataset");
 
   // Add each case's ID to the dropdown menu
-  data.names.forEach(name => dropdown.append("option").text(name).property("value", name));
+  data.names.forEach(name => dropdown.append("option").property("value", name).text(name));
   
   // Add event listener for drop down menu change
   dropdown.on("change", function() {
