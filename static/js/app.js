@@ -28,9 +28,7 @@ d3.json(samplesURL).then(function(data) {
   // Create bar chart trace
   let barTrace = {
     x: topTenValues,
-    y: topTenIDs.map(function(id) {
-      return "OTU " + id;
-    }),
+    y: topTenIDs.map(id => ("OTU " + id)),
     text: topTenLabels,
     type: "bar",
     orientation: "h"
@@ -88,9 +86,7 @@ d3.json(samplesURL).then(function(data) {
 
     // Restyle horizontal bar chart with new data
     Plotly.restyle("bar", "x", [topTenValues]);
-    Plotly.restyle("bar", "y", [topTenIDs.map(function(id) {
-          return "OTU " + id;
-        }),]);
+    Plotly.restyle("bar", "y", [topTenIDs.map(id => ("OTU " + id))]);
     Plotly.restyle("bar", "text", [topTenLabels]);
 
     // Apply filter to get sample data for demographic
