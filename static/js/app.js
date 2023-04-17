@@ -17,7 +17,7 @@ d3.json(samplesURL).then(function(data) {
   // Create top ten otuIDS list and reverse the list
   let topTenIDs = sampleData.otu_ids.slice(0,10);
   topTenIDs.reverse();
-  topTenIDs = topTenIDs.map(id => ("OTU " + id))
+  topTenIDs = topTenIDs.map(id => ("OTU " + id));
   // Create top ten labels list and reverse the list
   let topTenLabels = sampleData.otu_labels.slice(0,10);
   topTenLabels.reverse();
@@ -80,7 +80,7 @@ d3.json(samplesURL).then(function(data) {
 
     // Update the data variables
     topTenIDs = sampleData.otu_ids.slice(0,10).reverse();
-    topTenIDs = topTenIDs.map(id => ("OTU " + id))
+    topTenIDs = topTenIDs.map(id => ("OTU " + id));
     topTenLabels = sampleData.otu_labels.slice(0,10).reverse();
     topTenValues = sampleData.sample_values.slice(0,10).reverse();
 
