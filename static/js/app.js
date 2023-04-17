@@ -14,13 +14,12 @@ d3.json(samplesURL).then(function(data) {
   let sampleData = data.samples.filter(filterByID)[0];
 
   // Create horizontal bar chart with top ten OTUs of sample
-  // Create top ten otuIDS list
+  // Create top ten otuIDS list and reverse the list
   let topTenIDs = sampleData.otu_ids.slice(0,10);
-  // Reverse the list for Plotly defaults
   topTenIDs.reverse();
-  // Create top ten labels list
+  topTenIDs = topTenIDs.map(id => ("OTU " + id))
+  // Create top ten labels list and reverse the list
   let topTenLabels = sampleData.otu_labels.slice(0,10);
-  //Reverse the list
   topTenLabels.reverse();
   // Create top ten values list and reverse the list
   let topTenValues = sampleData.sample_values.slice(0,10);
@@ -28,7 +27,7 @@ d3.json(samplesURL).then(function(data) {
   // Create bar chart trace
   let barTrace = {
     x: topTenValues,
-    y: topTenIDs.map(id => ("OTU " + id)),
+    y: topTenIDs,
     text: topTenLabels,
     type: "bar",
     orientation: "h"
@@ -81,12 +80,13 @@ d3.json(samplesURL).then(function(data) {
 
     // Update the data variables
     topTenIDs = sampleData.otu_ids.slice(0,10).reverse();
+    topTenIDs = topTenIDs.map(id => ("OTU " + id))
     topTenLabels = sampleData.otu_labels.slice(0,10).reverse();
     topTenValues = sampleData.sample_values.slice(0,10).reverse();
 
     // Restyle horizontal bar chart with new data
     Plotly.restyle("bar", "x", [topTenValues]);
-    Plotly.restyle("bar", "y", [topTenIDs.map(id => ("OTU " + id))]);
+    Plotly.restyle("bar", "y", [topTenIDs]);
     Plotly.restyle("bar", "text", [topTenLabels]);
 
     // Apply filter to get sample data for demographic
